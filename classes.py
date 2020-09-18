@@ -32,3 +32,13 @@ class Candidate:
         self.training_centre = training_centre
         self.attempt = attempt_number
         self.previous_examiners = previous_examiners
+        
+class Examiner:
+    def __init__(self, title, first_name, last_name, language, bilingual, university):
+        self.title = title
+        self.first_name = first_name
+        self.last_name = last_name
+        self.full_name = title + " " + first_name + " " + last_name
+        self.language = language
+        self.bilingual = bilingual
+        self.university = university
