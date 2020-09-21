@@ -1,5 +1,4 @@
 import enum
-from string import *
 
 class Language(enum.Enum):
     english = 0
@@ -17,9 +16,6 @@ class TrainingCentre:
     @classmethod
     def get(cls, value):
         return [inst for inst in cls.instances if inst.abbr == value]
-
-queens = TrainingCentre("Queen's University", "QUEEN")
-uottawa = TrainingCentre('University of Ottawa', 'OTT')
 
 class Candidate:
     def __init__(self, id, first_name, last_name, language, training_centre, attempt_number, previous_examiners = None):
