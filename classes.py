@@ -3,7 +3,6 @@ import enum
 class Language(enum.Enum):
     english = 0
     french = 1
-    other = 2
 
 class TrainingCentre:
     instances = []
@@ -18,16 +17,14 @@ class TrainingCentre:
         return [inst for inst in cls.instances if inst.abbr == value]
 
 class Candidate:
-    def __init__(self, id, first_name, last_name, language, training_centre, attempt_number, previous_examiners = None):
+    def __init__(self, id, first_name, last_name, language, training_centre):
         self.id = id
         self.last_name = last_name
         self.first_name = first_name
         self.full_name = last_name + ', ' + first_name
-        self.caps_name = upper(last_name) + ', ' + first_name
+        self.caps_name = last_name.upper() + ', ' + first_name
         self.language = language
         self.training_centre = training_centre
-        self.attempt = attempt_number
-        self.previous_examiners = previous_examiners
         
 class Examiner:
     def __init__(self, title, first_name, last_name, language, bilingual, university):
