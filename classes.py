@@ -1,8 +1,9 @@
 import enum
 
 class Language(enum.Enum):
-    english = 0
-    french = 1
+    bilingual = 0
+    english = 1
+    french = 2
 
 class TrainingCentre:
     instances = []
