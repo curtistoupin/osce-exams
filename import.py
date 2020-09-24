@@ -40,7 +40,7 @@ def import_examiners(file_name):
         examiner_bilingual = True if examiners_df["Bilingual (Y/N)"][index] == "Y" else False
         if examiner_language == "E":
             examiner_language = Language.english
-        else;
+        else:
             examiner_language = Language.french
         examiners.append(Examiner(examiner_title,
                                    examiner_first,
@@ -50,6 +50,27 @@ def import_examiners(file_name):
                                    examiner_university))
     return(examiners)
     
+def import_conflicts(file_name,candidates,examiners):
+    conflicts = []
+    conflicts_df = pandas.read_excel(file_name, sheet_name='Conflicts')
+    for col in conflicts_df:
+        for row in conflicts_df[col]:
+            if not pandas.isnull(row):
+                conflicts.append(Conflict(examiner_by_name(examiners,col),candidate_by_name(candidates,row)))
+    return(conflicts)
+
+def candidate_by_name(candidates,name):
+    return([candidate for candidate in candidates if candidate.full_name == name][0])
+    
+def examiner_by_name(examiners,name):
+    return([examiner for examiner in examiners if examiner.full_name == name][0])
+    
+candidates = import_candidates('Alpha Download.xlsx')
+examiners = import_examiners('CAM Download.xlsx')
+
+print(import_conflicts('Conflicts.xlsx',candidates,examiners))
+
 
 #import_candidates('Alpha Download.xlsx')
-#mport_examiners('CAM Download.xlsx')
+#import_examiners('CAM Download.xlsx')
+#import_conflicts('Conflicts.xlsx')

@@ -1,9 +1,8 @@
 import enum
 
 class Language(enum.Enum):
-    bilingual = 0
-    english = 1
-    french = 2
+    english = 0
+    french = 1
 
 class TrainingCentre:
     instances = []
@@ -36,3 +35,9 @@ class Examiner:
         self.language = language
         self.bilingual = bilingual
         self.university = university
+        
+class Conflict:
+    def __init__(self,examiner,candidate):
+        self.examiner = examiner
+        self.candidate = candidate
+        
